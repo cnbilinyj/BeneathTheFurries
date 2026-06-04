@@ -19,6 +19,8 @@
 你们除了可以在 [GitHub](https://www.github.com/cnbilinyj/BeneathTheFurries) 里面读这本小说，  
 还可以在我的[个人网站](https://looseice-furry-vcard.ggff.net/novels/cf6fe50f-b414-47a3-9ec7-513944a6d31b/)里面读这本小说。
 
+[小说目录](catalogue.md)
+
 ## 关于 AI 文
 
 在 GitHub 里面可以看到我的所有保存记录。理论上说，每次小修改，只要我在手机上有保存，就会产生一次提交。
