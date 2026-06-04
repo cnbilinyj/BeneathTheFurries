@@ -57,4 +57,4 @@ inotifywait -m -r -e close_write --exclude '\.git/.*' /storage/emulated/0/Docume
 
 只能说不愧是 AI，人工白痴嘛（Artifical Idiot，人工白痴）。
 
-所以我是绝对不可能在文章主体里面使用AI的，我已经红温不下……我也数不清多少次了，反正绝对不下50次。 -->
+所以我是绝对不可能在文章主体里面使用AI的，我已经红温不下……我也数不清多少次了，反正绝对不下50次。甚至我在写逻辑决策的时候提问 AI 也很红温 -->
