@@ -23,17 +23,19 @@
 
 在 GitHub 里面可以看到我的所有保存记录。理论上说，每次小修改，只要我在手机上有保存，就会产生一次提交。
 
-    auto_commit() {
-      if [[ $(git --no-pager log -1 --format=%s | awk '{printf $2}') == $(date +%Y-%m-%d) ]]; then
-        local new_num=$(git --no-pager log -1 --format=%s | awk '{print $3}' | jq -Rr 'split("#")[1] | tonumber + 1 | "#" + tostring')
-      else
-        local new_num='#1'
-      fi
-      local new_msg="编辑 $(date +%Y-%m-%d) $new_num $(date +%H:%M)"
-      git add -A && git commit -m "$new_msg" && git push origin writer
-    }
-    
-    inotifywait -m -r -e close_write --exclude '\.git/.*' /storage/emulated/0/Documents/markor/novel/皮毛之下 2>/dev/null | while read; do auto_commit; done
+``` zsh
+auto_commit() {
+  if [[ $(git --no-pager log -1 --format=%s | awk '{printf $2}') == $(date +%Y-%m-%d) ]]; then
+    local new_num=$(git --no-pager log -1 --format=%s | awk '{print $3}' | jq -Rr 'split("#")[1] | tonumber + 1 | "#" + tostring')
+  else
+    local new_num='#1'
+  fi
+  local new_msg="编辑 $(date +%Y-%m-%d) $new_num $(date +%H:%M)"
+  git add -A && git commit -m "$new_msg" && git push origin writer
+}
+
+inotifywait -m -r -e close_write --exclude '\.git/.*' /storage/emulated/0/Documents/markor/novel/皮毛之下 2>/dev/null | while read; do auto_commit; done
+```
 
 自动化提交真的很好用你知道吗？
 
@@ -43,6 +45,6 @@
 
 如果文章主体用 AI 的话，是真的会把你气死的。因为它会在各种地方违背你的初始设定，或者违背它刚写过的东西。是的，就上一句它刚写过，下一句都会和上一句产生矛盾。
 
-只能说不愧是 AI，人工白痴嘛，（Artifical Idiot，人工白痴）
+只能说不愧是 AI，人工白痴嘛（Artifical Idiot，人工白痴）。
 
-所以我是绝对不可能在文章主体里面使用AI的，我已经红温不下……我也说不清多少次了，反正绝对不下50次。 -->
+所以我是绝对不可能在文章主体里面使用AI的，我已经红温不下……我也数不清多少次了，反正绝对不下50次。 -->
