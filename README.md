@@ -16,4 +16,4 @@
 
 ## 关于发布
 
-你们除了可以在 [GitHub](https://www.github.com/cnbilinyj/ 里面读这本小说，还可以在我的个人网站里面读。
+你们除了可以在 [GitHub](https://www.github.com/cnbilinyj/BeneathTheFurries) 里面读这本小说，还可以在我的[个人网站](https://furry-looseice-vcard.ggff.net/)里面读。
