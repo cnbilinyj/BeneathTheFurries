@@ -33,7 +33,9 @@
       git add -A && git commit -m "$new_msg" && git push origin writer
     }
     
-    
+    inotifywait -m -r -e close_write --exclude '\.git/.*' /storage/emulated/0/Documents/markor/novel/皮毛之下 2>/dev/null | while read; do auto_commit; done
+
+自动化提交真的很好用你知道吗？
 
 总之，这是我写的，不是 AI 写的。
 
