@@ -23,6 +23,16 @@
 
 在 GitHub 里面可以看到我的所有保存记录。理论上说，每次小修改，只要我在手机上有保存，就会产生一次提交。
 
+    auto_commit() {
+      if [[ $(git --no-pager log -1 --format=%s | awk '{printf $2}') == $(date +%Y-%m-%d) ]]; then
+        local new_num=$(git --no-pager log -1 --format=%s | awk '{print $3}' | jq -Rr 'split("#")[1] | tonumber + 1 | "#" + tostring')
+      else
+        local new_num='#1'
+      fi
+      local new_msg="编辑 $(date +%Y-%m-%d) $new_num $(date +%H:%M)"
+      git add -A && git commit -m "$new_msg" && git push origin writer
+    }
+    
     
 
 总之，这是我写的，不是 AI 写的。
