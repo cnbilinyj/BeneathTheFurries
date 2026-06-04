@@ -16,4 +16,15 @@
 
 ## 关于发布
 
-你们除了可以在 [GitHub](https://www.github.com/cnbilinyj/BeneathTheFurries) 里面读这本小说，还可以在我的[个人网站](https://looseice-furry-vcard.ggff.net/)里面读。
+你们除了可以在 [GitHub](https://www.github.com/cnbilinyj/BeneathTheFurries) 里面读这本小说，  
+还可以在我的[个人网站](https://looseice-furry-vcard.ggff.net/novels/cf6fe50f-b414-47a3-9ec7-513944a6d31b/)里面读这本小说。
+
+在 GitHub 里面还可以看到我的所有保存记录。理论上说，每次小修改，只要我在手机上有保存，就会产生一次提交。总之，这是我写的，不是 AI 写的。
+
+<!-- AI 确实太好用了，因为它真的能把你干红温。我只有极少数地方遣词造句我可能会用到 AI。
+
+如果文章主体用 AI 的话，是真的会把你气死的。因为它会在各种地方违背你的初始设定，或者违背它刚写过的东西。是的，就上一句它刚写过，下一句都会和上一句产生矛盾。
+
+只能说不愧是 AI，人工白痴嘛，（Artifical Idiot，人工白痴）
+
+所以我是绝对不可能在文章主体里面使用AI的，我已经红温不下……我也说不清多少次了，反正绝对不下50次。 -->
