@@ -46,7 +46,7 @@ auto_commit() {
   else
     local new_num='#1'
   fi
-  local new_msg="编辑 $(date +%Y-%m-%d) $new_num $(date +%H:%M)"
+  local new_msg="编辑 $(date +%Y-%m-%d) $new_num $(date +%H:%M) - from markor"
   git add -A && git commit -m "$new_msg" && git push origin writer
 }
 
