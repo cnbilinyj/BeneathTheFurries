@@ -51,6 +51,8 @@ _怎么没有番茄小说？_
 
 在 GitHub 里面可以看到我的所有保存记录。理论上说，每次小修改，只要我在手机上有保存，就会产生一次提交。
 
+<!--
+
 ``` zsh
 auto_commit() {
   if [[ $(git --no-pager log -1 --format=%s | awk '{printf $2}') == $(date +%Y-%m-%d) ]]; then
@@ -64,6 +66,31 @@ auto_commit() {
 
 inotifywait -m -r -e close_write --exclude '\.git/.*' /storage/emulated/0/Documents/markor/novel/皮毛之下 2>/dev/null | while read; do auto_commit; done
 ```
+
+``` PowerShell
+chcp 65001
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$PSDefaultParameterValues['*:Encoding'] = 'utf8'
+
+Add-Type -AssemblyName System.Windows.Forms
+
+$fw = New-Object System.IO.FileSystemWatcher I:\Documents\Git\BeneathTheFurries -Property @{IncludeSubdirectories=$true; EnableRaisingEvents=$true}
+Register-ObjectEvent $fw Changed -Action {
+    if ($Event.SourceEventArgs.FullPath -notmatch '\.git') {
+        # [System.Windows.Forms.MessageBox]::Show("事件触发`n$($Event.SourceEventArgs.FullPath)")
+        $d = Get-Date -Format yyyy-MM-dd
+        $n = git -C I:\Documents\Git\BeneathTheFurries log -1 --format=%s 2>$null
+        if ($n -match "编辑 $d #(\d+)") { $c = '#{0}' -f ([int]$matches[1]+1) } else { $c = '#1' }
+        $m = "编辑 $d $c $(Get-Date -Format HH:mm) - From VS Code"
+        git -C I:\Documents\Git\BeneathTheFurries add -A
+        git -C I:\Documents\Git\BeneathTheFurries commit -m $m
+        git -C I:\Documents\Git\BeneathTheFurries push origin writer &
+    }
+}
+Wait-Event
+```
+
+-->
 
 自动化提交真的很好用你知道吗？
 
