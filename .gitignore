@@ -1,0 +1,14 @@
+# 临时/备份文件
+*~
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# 编辑器
+.vscode/
+.idea/
+
+# 系统
+.DS_Store
+Thumbs.db
