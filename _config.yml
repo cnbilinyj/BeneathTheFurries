@@ -1,0 +1,15 @@
+# Jekyll config for GitHub Pages
+# Critical: include _res directories (Jekyll ignores underscore-prefixed dirs by default)
+include:
+  - _res
+
+# Don't process these
+exclude:
+  - .github
+  - scripts
+
+# Pretty permalinks
+permalink: pretty
+
+# Disable plugins (we don't need them)
+plugins: []

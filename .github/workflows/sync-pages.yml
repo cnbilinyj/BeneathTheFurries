@@ -1,0 +1,64 @@
+name: Sync to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - writer
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout gh-page
+        uses: actions/checkout@v4
+        with:
+          ref: gh-page
+          path: gh-page
+          fetch-depth: 0
+
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          path: source
+
+      - name: Configure git
+        working-directory: gh-page
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync release (from main)
+        if: github.ref == 'refs/heads/main'
+        working-directory: gh-page
+        run: |
+          rm -rf release
+          mkdir release
+          rsync -a --exclude='.git' --exclude='.github' ../source/ release/
+
+      - name: Sync writing (from writer)
+        if: github.ref == 'refs/heads/writer'
+        working-directory: gh-page
+        run: |
+          rm -rf writing
+          mkdir writing
+          rsync -a --exclude='.git' --exclude='.github' ../source/ writing/
+
+      - name: Commit and push
+        working-directory: gh-page
+        run: |
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to sync"
+          else
+            if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+              git commit -m "Auto sync main -> release"
+            else
+              git commit -m "Auto sync writer -> writing"
+            fi
+            git push
+          fi
