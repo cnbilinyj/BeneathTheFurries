@@ -10,8 +10,7 @@ exclude:
 
 # Pretty permalinks
 # permalink: pretty
-output_ext: .md
-permalink: /:categories/:title:output_ext
 
 # Disable plugins (we don't need them)
-plugins: []
+plugins: 
+  - jekyll-relative-links
