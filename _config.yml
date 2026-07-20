@@ -9,7 +9,7 @@ exclude:
   - scripts
 
 # Pretty permalinks
-permalink: pretty
+# permalink: pretty
 
 # Disable plugins (we don't need them)
 plugins: []
