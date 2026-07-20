@@ -10,6 +10,7 @@ exclude:
 
 # Pretty permalinks
 # permalink: pretty
+permalink: /:categories/:title.md
 
 # Disable plugins (we don't need them)
 plugins: []
