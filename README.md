@@ -10,6 +10,7 @@
 [GitHub 仓库](https://github.com/cnbilinyj/BeneathTheFurries)
 
 <details><summary>或许……</summary>
+
 这是一个关于身份和归属的故事，但也许不是。
 
 这是一个福瑞控的故事，但或许只是一个关于希望、奢望、失望与绝望的故事。
