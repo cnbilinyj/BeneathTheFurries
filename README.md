@@ -12,3 +12,5 @@
 [GitHub 仓库](https://github.com/cnbilinyj/BeneathTheFurries)
 
 <sub>这个页面虽然是 AI 写的……好吧，我纯懒</sub>
+
+$\textcolor{#88888822}{\scriptstyle \text{这个页面虽然是 AI 写的……好吧，我纯懒}}$
