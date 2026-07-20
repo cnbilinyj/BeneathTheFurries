@@ -7,7 +7,7 @@
 
 ---
 
-[GitHub 仓库](https://github.com/cnbilinyj/BeneathTheFurries)
+[![GitHub 仓库](https://gitcard.hd.luler.top/images/cnbilinyj/BeneathTheFurries.png)](https://github.com/cnbilinyj/BeneathTheFurries)
 
 <details><summary>或许……</summary>
 
