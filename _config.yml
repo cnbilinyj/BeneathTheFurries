@@ -10,7 +10,8 @@ exclude:
 
 # Pretty permalinks
 # permalink: pretty
-permalink: /:categories/:title.md.md
+output_ext: .md
+permalink: /:categories/:title:output_ext
 
 # Disable plugins (we don't need them)
 plugins: []
