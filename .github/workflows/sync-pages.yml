@@ -26,6 +26,10 @@ jobs:
           ref: ${{ github.ref }}
           path: source
 
+      - name: Replace .md with .html in references
+        working-directory: source
+        run: |
+          find . -name "*.md" -not -path "./.git/*" -exec sed -i -E 's/^(\[[^]]+\]:.*)\.md$/\1.html/' {} +
       - name: Configure git
         working-directory: gh-page
         run: |
