@@ -26,6 +26,80 @@ jobs:
           ref: ${{ github.ref }}
           path: source
 
+      # =========================================================
+      # 新增步骤：预处理 Markdown 链接
+      # 将引用式链接 [id] 和 [text][id] 转换为行内链接 [text](url)
+      # =========================================================
+      - name: Preprocess Markdown Links
+        working-directory: source
+        run: |
+          python3 << 'EOF'
+          import re
+          import os
+
+          def process_file(filepath):
+              with open(filepath, 'r', encoding='utf-8') as f:
+                  content = f.read()
+
+              # 1. 提取所有引用定义 [id]: url
+              refs = {}
+              # 匹配 [id]: url 或 [id]: <url> "可选标题"
+              for match in re.finditer(r'^\[(.+?)\]:\s*(.+?)(?:\s+"[^"]*")?\s*$', content, re.MULTILINE):
+                  ref_id = match.group(1)
+                  ref_url = match.group(2).strip()
+                  if ref_url.startswith('<') and ref_url.endswith('>'):
+                      ref_url = ref_url[1:-1]
+                  refs[ref_id] = ref_url
+
+              if not refs:
+                  return # 没有引用定义，跳过
+
+              modified = False
+
+              def replacer(match):
+                  nonlocal modified
+                  # match.group(1) 是显示文本
+                  # match.group(2) 是引用ID（如果有），否则就是快捷方式
+                  text = match.group(1)
+                  ref_id = match.group(2) or match.group(1) # 支持快捷方式 [id] 和完整引用 [text][id]
+                  
+                  if ref_id in refs:
+                      modified = True
+                      return f'[{text}]({refs[ref_id]})'
+                  return match.group(0)
+
+              # 2. 替换正文中的引用链接
+              # 正则解释：
+              # (?<!\!)        ：前面不是 ! (排除图片)
+              # \[([^\]]+)\]    ：匹配 [文本]
+              # (?:\[([^\]]+)\])?：可选的匹配 [id] (支持完整引用 [text][id])
+              # (?![\(\[])      ：后面不是 ( (排除已是行内的) 也不是 [ (避免错误匹配)
+              pattern = r'(?<!\!)\[([^\]]+)\](?:\[([^\]]+)\])?(?![\(\[])'
+              content = re.sub(pattern, replacer, content)
+
+              # 如果发生了修改，则清理掉底部的引用定义行（避免产生无用的空链接）
+              if modified:
+                  for ref_id in refs:
+                      # 移除引用定义行
+                      content = re.sub(r'^\[' + re.escape(ref_id) + r'\]:\s*.*\n?', '', content, flags=re.MULTILINE)
+                  
+                  # 清理可能产生的多余空行
+                  content = re.sub(r'\n{3,}', '\n\n', content)
+                  
+                  with open(filepath, 'w', encoding='utf-8') as f:
+                      f.write(content)
+                  print(f"Processed: {filepath}")
+
+          # 遍历目录处理所有 .md 文件
+          for root, _, files in os.walk('.'):
+              if '.git' in root or '_site' in root:
+                  continue
+              for file in files:
+                  if file.endswith('.md'):
+                      process_file(os.path.join(root, file))
+          print("Markdown preprocessing complete.")
+          EOF
+
       - name: Configure git
         working-directory: gh-page
         run: |
