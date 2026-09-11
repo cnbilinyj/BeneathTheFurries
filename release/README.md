@@ -37,7 +37,7 @@
 ## 关于发布
 
 你们除了可以在 [GitHub](https://www.github.com/cnbilinyj/BeneathTheFurries) 里面读这本小说，  
-还可以在我的[个人网站](https://looseice-furry-vcard.ggff.net/novels/cf6fe50f-b414-47a3-9ec7-513944a6d31b/)里面读这本小说。
+还可以在我的[个人网站](https://looseice.com/novels/cf6fe50f-b414-47a3-9ec7-513944a6d31b/)里面读这本小说。
 
 _怎么没有番茄小说？_
 
