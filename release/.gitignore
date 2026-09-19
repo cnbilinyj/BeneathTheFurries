@@ -8,7 +8,6 @@
 # 编辑器
 .vscode/
 .idea/
-.github/
 
 # 系统
 .DS_Store
